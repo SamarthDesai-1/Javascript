@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .content  {
+      background-color: gold;
+      padding: 10px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="content" id="contentID"></div>
+
+  <script>
+
+    /* Outputting data method : 1 */
+    /* This method prints in the console. */
+    console.log("hello world, or any other things you want to output");
+
+    /* Outputting data method : 2 */
+    /* This method prints on the webpage */
+    document.write("hello world, or any other things you want to output");
+
+    /* Outputting data method : 3 */
+    /* This method prints on the webpage */
+    alert("hello world, or any other things you want to output");
+
+    /* Outputting data method : 4 */
+    /* This method prints on the webpage */
+    let data = "hello world, or any other things you want to output";
+    document.getElementById("contentID").innerHTML = data;
+
+
+  </script>
+</body>
+</html>
