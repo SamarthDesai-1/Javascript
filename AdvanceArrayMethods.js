@@ -111,6 +111,7 @@ console.log(hasAdmin);
 
 
 
+
 /** Every Method */
 /** Tests whether all elements pass the test */
 const hasMature = users.every(user => user.age >= 18);
@@ -128,10 +129,10 @@ console.log(allRequiredFields);
 
 
 
+
 /** Transformation methods */
 
 /** Sort method */
-
 const unsortedNumbers = [5, 2, 1, 4, 3];
 const sortedNumbers = unsortedNumbers.sort();
 console.log(sortedNumbers);
@@ -149,3 +150,46 @@ const products = [
 products.sort((a, b) => a.price - b.price);
 console.log(products);
 
+/** Reverse method */
+/** Reverses the order of elements in an array */
+const letters = ['a', 'b', 'c', 'd'];
+letters.reverse();
+console.log(letters);
+
+/** Slice method */
+/** Follows zero-based indexing */
+const originalArray = [1,2,3,4,5];
+const sliceArray = originalArray.slice(1, 4);
+console.log(sliceArray);
+
+/** Real world example of slice method.
+ * 
+ * Applying pagination
+ */
+const allItems = ['item1', 'item2', 'item3', 'item4', 'item5', 'item6', 'item7', 'item8'];
+const itemsPerPage = 3;
+const currentPage = 2; 
+
+const paginatedItems = allItems.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
+console.log(paginatedItems);
+
+
+
+
+/** Join method */
+const words = ['Hello', 'world', 'of', 'JavaScript'];
+const sentence = words.join(" ");
+console.log(sentence);
+
+/** Real world example of join method */
+const userData = ['John', 'Doe', 'john@example.com', '123-456-7890'];
+const grouped = userData.join(',');
+console.log(grouped);
+
+
+
+
+/** Flat method */
+const nestedArray = [1, 2, [3, 4, [5, 6]]];
+const flatArray = nestedArray.flat(2);
+console.log(flatArray);
