@@ -5,12 +5,14 @@ let sub = 85 - 10;
 let mul = 8 * 2;
 let div = 8 / 4;
 let rem = 52 % 3;
+let power = 10 ** 5;
 
 console.log(`Sum : ${sum}`);
 console.log(`Sub : ${sub}`);
 console.log(`Mul : ${mul}`);
 console.log(`Div : ${div}`);
 console.log(`Rem : ${rem}`);
+console.log(`Power : ${power}`);
 
 /* Comparison Operators */
 
