@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .sty {
+      background-color: red;
+      font-size: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      color: white;
+    }
+    .container {
+      cursor: pointer;
+    }
+    .btn {
+      cursor: pointer;
+      margin-top: 25px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container"></div>
+
+  <script>
+    // let a = prompt("Enter a number");
+
+    // let intA = parseInt(a);
+    // console.log(`Type of a is : ${typeof intA}`);
+
+    // console.log(typeof a);
+    // console.log(`Entered number is : ${a}`);
+
+    let x = document.querySelector(".container");
+
+    x.innerHTML = "Immigration and citizenship of Canada.";
+
+    x.addEventListener("click", () => {
+
+      x.classList.add("sty");
+
+    });
+
+  </script>
+</body>
+</html>
