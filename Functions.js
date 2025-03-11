@@ -34,4 +34,3 @@ const mul = (a, b) => {
 }
 
 console.log(`Multiplication of ${a} and ${b} is ${mul(a, b)}`);
-

@@ -37,4 +37,3 @@ nums.shift(2400); /** Remove a value from the beginning of the array */
 fruits.splice(1, 2, "Chikoo", "Guava");
 
 console.log(fruits);
-
