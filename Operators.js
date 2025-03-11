@@ -59,3 +59,14 @@ a %= b;
 
 console.log(`A : ${a}`);
 console.log(`B : ${b}`);
+
+/* Increment and decrement operators */
+
+a = 1;
+
+console.log(`Pre increment : ${++a}`);
+console.log(`Post increment : ${a++}`);
+
+console.log(`Pre decrement : ${--a}`);
+console.log(`Post decrement : ${a--}`);
+console.log(a);
