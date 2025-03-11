@@ -1,51 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
 
-  <style>
-    .sty {
-      background-color: red;
-      font-size: 20px;
-      padding: 20px;
-      border-radius: 10px;
-      color: white;
-    }
-    .container {
-      cursor: pointer;
-    }
-    .btn {
-      cursor: pointer;
-      margin-top: 25px;
-    }
-  </style>
-</head>
-<body>
+    <style>
+      * {
+        font-family: "Montserrat", sans-serif;
+      }
+      .sty {
+        background-color: red;
+        font-size: 20px;
+        padding: 20px;
+        border-radius: 10px;
+        color: white;
+        width: fit-content;
+        font-weight: 500;
+      }
+      .container {
+        cursor: pointer;
+      }
+      .btn {
+        cursor: pointer;
+        margin-top: 25px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container"></div>
 
-  <div class="container"></div>
+    <script>
+      // let a = prompt("Enter a number");
 
-  <script>
-    // let a = prompt("Enter a number");
+      // let intA = parseInt(a);
+      // console.log(`Type of a is : ${typeof intA}`);
 
-    // let intA = parseInt(a);
-    // console.log(`Type of a is : ${typeof intA}`);
+      // console.log(typeof a);
+      // console.log(`Entered number is : ${a}`);
 
-    // console.log(typeof a);
-    // console.log(`Entered number is : ${a}`);
-    
+      let x = document.querySelector(".container");
 
-    let x = document.querySelector(".container");
+      x.innerHTML = "Immigration and citizenship of Canada.";
 
-    x.innerHTML = "Immigration and citizenship of Canada.";
-
-    x.addEventListener("click", () => {
-
-      x.classList.add("sty");
-
-    });
-
-  </script>
-</body>
+      x.addEventListener("click", () => {
+        x.classList.add("sty");
+      });
+    </script>
+  </body>
 </html>
