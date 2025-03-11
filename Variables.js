@@ -24,3 +24,17 @@ function demo() {
 console.log(`Outer valu of A : ${a}`);
 console.log(`Outer valu of B : ${b}`);
 demo();
+
+/**
+ 
+  A memory aid you might find helpful: "SNBUN-AO"
+
+  String: Text in quotes
+  Number: Integers and decimals
+  Boolean: true/false logic
+  Undefined: Declared but empty
+  Null: Intentionally empty
+  Array: Ordered collection [...]
+  Object: Named properties {...}
+
+*/
