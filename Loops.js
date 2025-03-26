@@ -47,9 +47,23 @@ for (const i of array) {
  */
 
 const object = {
+  
   name: 'Samarth Desai',
   age: 30,
-  city: 'Calgary, Canada'
+  city: 'Calgary',
+  country: 'Canada',
+  postalCode: 'T3M 0T4',
+  phone: "+1 403 123 4567",
+  email: "a4B0o@example.com",
+  website: "https://www.example.com",
+  linkedIn: "https://www.linkedin.com/in/samarthdesai",
+  github: "https://www.github.com/samarthd",
+  twitter: "https://www.twitter.com/samarthd",
+  facebook: "https://www.facebook.com/samarthd",
+  instagram: "https://www.instagram.com/samarthd",
+  youtube: "https://www.youtube.com/samarthd",
+  profession: "Businessman"
+
 };
 
 for (const key in object) {
@@ -64,6 +78,8 @@ for (const key in object) {
 const fruits = ['Apple', 'Banana', 'Mango', 'Orange', 'Pineapple'];
 
 fruits.forEach((fruitName, index, array) => {
+
   console.log(`Name : ${fruitName}, Index: ${index}, Array: ${array}`);
   console.log(`Length: ${array.length}`);
+
 });

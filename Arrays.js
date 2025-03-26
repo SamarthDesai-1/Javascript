@@ -34,6 +34,6 @@ nums.unshift(2400); /** Add a value at the beginning of the array */
 nums.shift(2400); /** Remove a value from the beginning of the array */
 
 
-fruits.splice(1, 2, "Chikoo", "Guava");
+fruits.splice(1, 2, "Chikoo", "Guava", "Strawberry"); /** Add or remove elements from the array */
 
 console.log(fruits);

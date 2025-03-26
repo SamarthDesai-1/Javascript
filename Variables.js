@@ -27,14 +27,20 @@ demo();
 
 /**
  
-  A memory aid you might find helpful: "SNBUN-AO"
+  A memory aid you might find helpful: "NNBBSSU"
 
-  String: Text in quotes
   Number: Integers and decimals
-  Boolean: true/false logic
-  Undefined: Declared but empty
   Null: Intentionally empty
+
+  Boolean: true/false logic
+  BigInt: Large integers
+
+  Symbol: Unique identifiers
+  String: Text in quotes
+
+  Undefined: Declared but empty
+
   Array: Ordered collection [...]
   Object: Named properties {...}
 
-*/
+*/ 

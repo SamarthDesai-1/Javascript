@@ -48,6 +48,7 @@ Reduce the elements of an array to a single value.
 accumulator = previous value of the reduce, currentValue = current value of the reduce
 
 */
+
 let sum = array.reduce((accumulator, currentValue) => accumulator + currentValue);
 console.log(sum);
 
@@ -61,6 +62,7 @@ const cart = [
 const totalPrice = cart.reduce((total, item) => {
 
   return total + (item.price * item.quantity);
+
 }, 0);
 
 console.log(totalPrice);
@@ -68,6 +70,7 @@ console.log(totalPrice);
 
 /** More complex reduce example - group by property */
 const people = [
+  { name: 'Watson', department: 'Backend' }, 
   { name: 'Alice', department: 'Engineering' },
   { name: 'Bob', department: 'Sales' },
   { name: 'Charlie', department: 'Engineering' },
@@ -85,6 +88,7 @@ const byDepartment = people.reduce((acc, person) => {
   acc[person.department].push(person.name);
 
   return acc;
+
 }, {});
 
 console.log(byDepartment);
@@ -121,7 +125,7 @@ console.log(hasMature);
 const formData = [
   { field: 'name', value: 'John', required: true },
   { field: 'email', value: 'john@example.com', required: true },
-  { field: 'phone', value: '', required: false }
+  { field: 'phone', value: '+1 (123) 456-7890', required: false }
 ];
 
 const allRequiredFields = formData.every(field => field.required);

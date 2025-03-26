@@ -70,3 +70,12 @@ console.log(`Post increment : ${a++}`);
 console.log(`Pre decrement : ${--a}`);
 console.log(`Post decrement : ${a--}`);
 console.log(a);
+
+
+
+
+
+/** Power Operator */
+
+const num = 5 ** 2;
+console.log(`Power of 5 with respect to 2 is : ${num}`);

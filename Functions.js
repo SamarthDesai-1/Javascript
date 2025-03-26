@@ -1,16 +1,19 @@
 /* Function declaration */
 
+
 /*
 Syntax:
 
-function functionName() {
-  
-  code for execution.
-}
+  function functionName() {
+    
+    code for execution.
+
+  }
 
 */
 
 function greet() {
+  
   console.log("Hello samarth desai");
 }
 
