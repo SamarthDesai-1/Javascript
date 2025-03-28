@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    
+    <button onclick="startGame()">Start the game</button>
+
+    <script>
+
+      function startGame() {
+
+        let times = 1;
+        let pointX = 0; /** Computer */
+        let pointY = 0; /** User */
+
+        let computer = () => {
+          return Math.floor(Math.random() * 3);
+        };
+
+        let computerCHOICE = "";
+        let userCHOICE = "";
+
+        while (times <= 10) {
+          let x = computer();
+          if (x == 0) computerCHOICE = "s";
+          else if (x == 1) computerCHOICE = "w";
+          else computerCHOICE = "g";
+
+          let y = prompt("Your turn");
+          if (y == "s") userCHOICE = "s";
+          else if (y == "w") userCHOICE = "w";
+          else userCHOICE = "g";
+
+          winner(computerCHOICE, userCHOICE);
+
+          if (times == 10) {
+            console.log(`Computer points : ${pointX}`);
+            console.log(`Your points : ${pointY}`);
+
+            if (pointX > pointY)
+              console.log("Sorry, this time computer won the match.");
+            else console.log("You win the match.");
+          }
+
+          times++;
+        }
+
+        function winner(computer, user) {
+          if (computer != user) {
+            if (computer == "s" && user == "w") pointX++;
+            else if (computer == "w" && user == "s") pointY++;
+            else if (computer == "g" && user == "s") pointX++;
+            else if (computer == "s" && user == "g") pointY++;
+            else if (computer == "w" && user == "g") pointX;
+            else if (computer == "g" && user == "w") pointY++;
+          }
+        }
+      }
+
+    </script>
+  </body>
+</html>

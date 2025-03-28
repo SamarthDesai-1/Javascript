@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <h2 id="text"></h2>
+  
+  <script>
+    
+    /** Alert */
+    alert("This is alert message.");
+
+    /** Confirm */
+    let val = confirm("This is confirm message. Do you want to proceed?").toString();
+    console.log(val);
+    
+    if (val == "true") {
+      document.getElementById("text").innerHTML = "Payment is in processing";
+    }
+    else {
+      document.getElementById("text").innerHTML = "Payment is cancelled";
+    }
+
+    /** Prompt */
+    let age = prompt("Enter your age", 18);
+    console.log(`Age that you had entered is : ${age}`);
+
+  </script>
+</body>
+</html>
