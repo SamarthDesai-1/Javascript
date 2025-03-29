@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      margin-top: 100px;
+    }
+    .container {
+      width: fit-content;
+      padding: 40px 40px;
+      border-radius: 10px;
+      box-shadow: 8px 8px 10px 8px beige;
+    }
+    .btn-sec {
+      display: flex;
+      flex-direction: row;
+      margin-top: 10px;
+    }
+    .btnPY {
+      margin-right: 10px;
+      outline: none;
+      padding: 10px 20px;
+      background-color: green;
+      border-style: none;
+      color: white;
+      font-size: 15px;
+      border-radius: 7px;
+      min-width: 150px;
+      cursor: pointer;
+    }
+    .btnPA {
+      margin-left: 10px;
+      min-width: 150px;
+      cursor: pointer;
+      outline: none;
+      padding: 10px 20px;
+      background-color: red;
+      border-style: none;
+      color: white;
+      font-size: 15px;
+      border-radius: 7px;
+    }
+  </style>
+
+</head>
+<body>
+
+  <div class="container">
+    <h1>JS Music</h1>
+    <span id="status"></span>
+    <div class="btn-sec">
+      <button onclick="playSound()" class="btnPY">Play sound</button>
+      <button onclick="pauseSound()" class="btnPA">Pause sound</button>
+    </div>
+  </div>
+  
+
+  <script>
+
+    const audio = new Audio('Time.mp3');
+
+    const playSound = () => {
+
+      audio.play().catch(error => console.error("Audio play failed : ", error));
+      document.getElementById("status").innerHTML = "Audio is playing...!!"
+      
+    }
+    
+    const pauseSound = () => {
+      
+      audio.pause();
+      document.getElementById("status").innerHTML = "Audio is paused...!!"
+    }
+
+    audio.volume = 0.5;
+
+  </script>
+</body>
+</html>
