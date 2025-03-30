@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li>Home</li>
+        <li>Contact</li>
+        <li>API key</li>
+      </ul>
+    </nav>
+
+    <div class="container">
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus
+        ducimus veritatis a perspiciatis odit nulla, laudantium eos asperiores
+        vero eaque.
+      </p>
+    </div>
+
+    <script>
+      const changeBg = () => {
+        document.body.firstElementChild.style.background = 'cadetblue';
+      }
+      let b = document.body;
+      console.log("First child of B is : ", b.firstChild);
+      console.log("First element child of B is : ", b.firstElementChild);
+
+
+      changeBg()
+    </script>
+  </body>
+</html>

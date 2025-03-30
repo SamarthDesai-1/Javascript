@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+      }
+      #result {
+        color: green;
+      }
+      .container {
+        /* border: 2px solid black; */
+        width: fit-content;
+        padding: 20px 20px;
+        box-shadow: 6px 6px 10px 6px beige;
+        border-radius: 10px;
+      }
+      #txt {
+        padding-top: 10px;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        outline: none;
+        padding-left: 10px;
+      }
+      .btn {
+        padding: 10px 20px;
+        cursor: pointer;
+        background-color: cadetblue;
+        color: white;
+        outline: none;
+        border-style: none;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+      }
+      .container-two {
+        display: flex;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Chances : <span id="score">10</span></h1>
+      <div class="container-two">
+        <input type="number" id="txt" />
+        <button onclick="userGuess()" class="btn">Submit</button>
+      </div>
+      <span id="result"></span>
+    </div>
+
+    <script>
+      let chances = 10;
+      const computerGuess = Math.floor(Math.random() * 100);
+      console.log(computerGuess);
+
+      const userGuess = () => {
+        const user = Number.parseInt(document.getElementById("txt").value);
+
+        if (user > computerGuess) {
+          console.log("Number is less than : ", user);
+          document.getElementById("score").innerHTML = --chances;
+        } 
+        else if (user < computerGuess) {
+          console.log("Number is more than : ", user);
+          document.getElementById("score").innerHTML = --chances;
+        } 
+        else {
+          document.getElementById("result").innerHTML = "Correct guess";
+        }
+
+        if (chances == 0) {
+          alert("You lose the game, start a new play.");
+          chances = 10;
+          document.getElementById("score").innerHTML = chances;
+          document.getElementById("txt").value = "";
+        }
+      };
+    </script>
+  </body>
+</html>

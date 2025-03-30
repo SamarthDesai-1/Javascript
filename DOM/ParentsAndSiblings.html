@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<!-- first child of body -->
+<body<div><div class="first"></div><div class="second"></div></div>
+
+
+  
+  <script>
+    console.log(document.body.firstChild);
+
+    let a = document.body.firstChild;
+
+    /** Returns only nodes */
+    console.log(a.parentNode);
+
+    /** Return valid HTML element */ 
+    console.log(a.parentElement);
+
+    console.log(a.firstChild.nextSibling);
+  </script>
+</body>
+</html>
