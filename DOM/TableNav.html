@@ -1,15 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <table class="table" border="2px solid black">
+        <caption>
+          Table of captions
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-  <script>
-    
-  </script>
-</body>
+    <script>
+      let t = document.body.firstElementChild.firstElementChild;
+      console.log(t);
+
+      console.log(t.rows);
+
+      console.log(t.rows[1].firstElementChild.firstChild);
+
+      console.log(t.rows[2].rowIndex);
+      console.log(t.caption);
+      console.log(t.tHead);
+      console.log(t.tHead.firstElementChild);
+      console.log(t.tHead.firstElementChild.rowIndex);
+      console.log(t.tHead.firstElementChild.sectionRowIndex);
+      console.log(t.tHead.firstElementChild.cells);
+      console.log(t.tFoot);
+      console.log(t.tBodies);
+      console.log(t.tBodies[0].rows);
+
+      console.log(typeof document);
+      console.log(typeof window);
+
+    </script>
+  </body>
 </html>
