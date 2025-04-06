@@ -29,7 +29,5 @@ const calculateCompoundingValue = (amount, interestPerYear, years) => {
 }
 
 
-
-
 /** This function invokes the compounding calculator. */
 inputData();

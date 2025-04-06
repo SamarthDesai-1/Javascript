@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav>
+      <li>Home</li>
+      <li>About</li>
+      <li>Contact us</li>
+    </nav>
+
+    <div class="container">
+      <div class="box" id="id1">
+        This is element 1 <span id="sp1">SPAN TAG</span>
+      </div>
+      <div class="box" id="id2">This is element 2</div>
+    </div>
+
+
+    <table border="1px solid black">
+      <thead>
+        <th>This is a table</th>
+      </thead>
+      <td>Sr.no</td>
+      <td>Name</td>
+      <td>Age</td>
+      <tr>
+        <td>1</td>
+        <td>Samarth R Desai</td>
+        <td>20</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>John D Rockefeller</td>
+        <td>90</td>
+      </tr>
+    </table>
+
+    <script>
+
+      let id = document.getElementById("id1");
+      let sp = document.getElementById("sp1");
+      console.log(id);
+
+      console.log(id1.matches(".class"));
+      console.log(id1.matches(".box"));
+
+      console.log(sp1.closest(".box"));
+      console.log(sp1.closest("#sp1"));
+
+      console.log(id1.contains(sp));
+      console.log(id1.contains(id1));
+
+      
+
+      /** Q: 1 */ 
+      document.getElementsByTagName("nav")[0].firstElementChild.style.color = 'red';
+      
+      /** Q: 2 */
+      document.getElementsByTagName("nav")[0].firstElementChild.style.color = 'green';
+      document.getElementsByTagName("nav")[0].lastElementChild.style.color = 'green'
+
+      /** Q: 3 */
+      let arr = Array.from(document.getElementsByTagName("li")).forEach(element => {
+        
+        element.style.background = 'cyan';
+      });
+
+    </script>
+  </body>
+</html>
