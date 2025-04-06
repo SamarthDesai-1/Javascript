@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        font-family: "Quicksand", sans-serif;
+      }
+      .format {
+        font-size: 30px;
+        font-weight: bold;
+      }
+      .input-box {
+        padding: 5px;
+        outline: none;
+        font-weight: bold;
+        font-size: 13px;
+        margin: 10px 10px 0px 10px;
+        
+      }
+      .btn {
+        padding: 10px;
+        cursor: pointer;
+        width: fit-content;
+        margin-top: 15px;
+        background-color: green;
+        color: white;
+        border: none;
+        font-size: 15px;
+        font-weight: bold;
+        border-radius: 5px;
+        margin-left: 10px;
+        margin-bottom: 10px;
+      }
+      .inputs {
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <div class="container">
+      <h1>Compounding calculator</h1>
+
+      <div class="inputs">
+        <input type="text" placeholder="Principle amount" id="amt" class="input-box" />
+        <input type="text" placeholder="Interest" id="int" class="input-box" />
+        <input type="text" placeholder="Time period" id="tm" class="input-box" />
+
+        <button onclick="process()" class="btn">Calculate</button>
+        <span id="compoundedValue"></span>
+      </div>
+      <br />
+    </div>
+
+    <script src="Compounding.js"></script>
+  </body>
+</html>
