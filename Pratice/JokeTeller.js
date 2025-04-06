@@ -111,6 +111,20 @@ let jokes = [
 const fetchJoke = () => {
 
   document.getElementById("insertJoke").innerHTML = "";
-  document.getElementById("insertJoke").innerHTML = jokes[Math.floor(Math.random() * 100)];
+  let randomNumber = Math.floor(Math.random() * 100);
+
+  document.getElementById("insertJoke").innerHTML = jokes[randomNumber];
   document.getElementById("insertJoke").classList.add("joke");
+
+  readAloud(randomNumber);
+
+}
+
+const readAloud = (randomNumber) => {
+  
+  const msg = new SpeechSynthesisUtterance();
+  msg.text = jokes[randomNumber];
+  msg.lanf = "en-US";
+
+  window.speechSynthesis.speak(msg);
 }
