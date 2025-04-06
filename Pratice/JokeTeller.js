@@ -113,5 +113,4 @@ const fetchJoke = () => {
   document.getElementById("insertJoke").innerHTML = "";
   document.getElementById("insertJoke").innerHTML = jokes[Math.floor(Math.random() * 100)];
   document.getElementById("insertJoke").classList.add("joke");
-
 }

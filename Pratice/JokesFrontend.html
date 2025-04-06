@@ -1,53 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
 
-  <style>
-    
-    * {
-      font-family: 'Montserrat', sans-serif;
-    }
-    .container {
-      display: flex;
-      flex-direction: column;
-      width: fit-content;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 6px 6px 6px beige;
-      margin-top: 30px;
-      margin-left: 50px;
-    }
-    .joke {
-      margin-bottom: 20px;
-      font-size: 25px;
-      font-weight: bold;
-    }
-    .btn {
-      cursor: pointer;
-      width: fit-content;
-      background-color: green;
-      color: white;
-      border: none;
-      padding: 10px;
-      border-radius: 10px;
-      font-weight: bold;
-    }
-  </style>
-</head>
-<body>
+    <style>
+      * {
+        font-family: "Montserrat", sans-serif;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        width: fit-content;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 6px 6px 6px beige;
+        margin-top: 30px;
+        margin-left: 50px;
+      }
+      .joke {
+        margin-bottom: 20px;
+        font-size: 25px;
+        font-weight: bold;
+      }
+      .btn {
+        cursor: pointer;
+        width: fit-content;
+        background-color: green;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 10px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <span id="insertJoke"></span>
+      <button onclick="fetchJoke()" class="btn">Let me tell you a Joke</button>
+    </div>
 
-  <div class="container">
-    <span id="insertJoke"></span>
-    <button onclick="fetchJoke()" class="btn">Let me tell you a Joke</button>
-  </div>
-
-  <script src="JokeTeller.js"></script>
-</body>
+    <script src="JokeTeller.js"></script>
+  </body>
 </html>
