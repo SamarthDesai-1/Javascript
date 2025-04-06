@@ -68,14 +68,11 @@ const formatNumber = (strNumber) => {
   }
 
   
-  if (findPoint == true) {
+  if (findPoint == true) 
+    newFormatBeforeDecimal = newFormatBeforeDecimal.split('').reverse().join('') + afterDecimal;
+  else 
     newFormatBeforeDecimal = newFormatBeforeDecimal.split('').reverse().join('');
-    newFormatBeforeDecimal += afterDecimal;
-
-  }
-  else {
-    newFormatBeforeDecimal = newFormatBeforeDecimal.split('').reverse().join('');
-  }
+  
 
   return newFormatBeforeDecimal;
 }
