@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container"></div>
+
+    <script>
+      document.write("Hello World");
+
+      // let a = setTimeout(() => {
+
+      //   alert("SetTimeOut");
+      // }, 2000);
+
+      // clearTimeout(a); /** Cleat the timeout */
+
+      // console.log(a);
+
+
+      const sum = (a, b) => {
+        console.log("Yes, I'm running : " + (a + b));
+        
+      }
+
+      setTimeout(sum, 3000, 1, 2);
+      
+      const SUM = (a, b) => {
+        console.log("Yes, I'm running SUM : " + (a + b));
+
+      }
+
+      let x = setInterval(SUM, 3000, 2, 2);
+      clearInterval(x);
+    </script>
+  </body>
+</html>

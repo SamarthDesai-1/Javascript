@@ -21,12 +21,14 @@
         font-weight: bold;
       }
       .input-box {
-        padding: 5px;
+        padding: 10px;
         outline: none;
         font-weight: bold;
         font-size: 13px;
         margin: 10px 10px 0px 10px;
-        
+        /* border-style: none; */
+        border-radius: 5px;
+        border: 1px solid grey;
       }
       .btn {
         padding: 10px;
@@ -50,15 +52,25 @@
       }
     </style>
   </head>
-  
+
   <body>
     <div class="container">
       <h1>Compounding calculator</h1>
 
       <div class="inputs">
-        <input type="text" placeholder="Principle amount" id="amt" class="input-box" />
+        <input
+          type="text"
+          placeholder="Principle amount"
+          id="amt"
+          class="input-box"
+        />
         <input type="text" placeholder="Interest" id="int" class="input-box" />
-        <input type="text" placeholder="Time period" id="tm" class="input-box" />
+        <input
+          type="text"
+          placeholder="Time period"
+          id="tm"
+          class="input-box"
+        />
 
         <button onclick="process()" class="btn">Calculate</button>
         <span id="compoundedValue"></span>

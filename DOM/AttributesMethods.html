@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="first" class="hey" hidden>
+    I'm first container;
+  </div>
+
+  <div id="second" data-game="gta5" data-player="samarth">
+    GTA 5
+  </div>
+
+  hello world
+
+  <script>
+
+    let a = document.getElementById("first").getAttribute("class");
+    console.log(a);
+
+
+    console.log(document.getElementById("first").hasAttribute("class"));
+    console.log(document.getElementById("first").hasAttribute("style"));
+    console.log(document.getElementById("first").hasAttribute("hidden"));
+    document.getElementById("first").setAttribute("class", "true samarth");
+
+    if (document.getElementById("first").hasAttribute("hidden") == false) {
+      // document.getElementById("first").setAttribute("hidden", "true");
+    }
+
+    document.getElementById("first").removeAttribute("hidden"); 
+    document.getElementById("first").removeAttribute("class");
+    
+    console.log(document.getElementById("first").attributes);
+    console.log(Array.from(document.getElementById("first").attributes));
+
+
+    /** How to create custom attributes */
+
+    let b = document.getElementById("second");
+    console.log(b.dataset);
+    console.log(b.dataset.game);
+    console.log(b.dataset.player);
+
+
+    
+  </script>
+</body>
+</html>

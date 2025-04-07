@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insertion Methods</title>
+</head>
+<body>
+  
+  I'm start of this container (outer)
+  <div class="container">
+    I'm start of this container (inner)
+    <div id="first">I'm a first element</div>
+    I'm end of this container (inner)
+  </div>
+  I'm end of this container (outer)
+
+  <script>
+
+    /** This is easy way to insert element in the DOM in html. */ 
+    let a = document.getElementsByTagName("div")[0];
+    a.innerHTML += '<i>Hello world</i>';
+
+
+    let div = document.createElement("b");
+    div.innerHTML = "Samarth R Desai";
+
+    // for (let i = 1; i <= 10; i++) {
+    //   let div = document.createElement("b");
+    //   div.innerHTML = `Hello world : ${i}` + "\n" + "<br>";
+    //   a.appendChild(div);
+    // }
+
+    // a.appendChild(div);
+    // a.append(div);
+
+    // a.prepend(div)
+    // a.before(div);
+    // a.after(div);
+
+    // a.replaceWith(div);
+
+    
+
+  </script>
+</body>
+</html>

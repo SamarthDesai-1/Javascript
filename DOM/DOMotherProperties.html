@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InnerHTML</title>
+</head>
+<body>
+  Hello World
+  <span id="first"><b>HI</b>This is span.</span>
+
+
+  <script>
+
+    console.log(document.getElementsByTagName("span")[0]);
+    console.dir(document.getElementsByTagName("span")[0]);
+
+    console.log(document.body.firstChild.nodeName);
+    console.log(document.body.firstElementChild.nodeName);
+
+
+    console.log(document.body.textContent); /** Copy all website. */
+    console.log(); 
+
+    /** first.hidden = false; */
+    
+  </script>
+</body>
+</html>

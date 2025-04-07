@@ -114,7 +114,11 @@ const fetchJoke = () => {
   let randomNumber = Math.floor(Math.random() * 100);
 
   document.getElementById("insertJoke").innerHTML = jokes[randomNumber];
-  document.getElementById("insertJoke").classList.add("joke");
+
+  /** Below both methods are useful to add classes dynamically */
+
+  // document.getElementById("insertJoke").classList.add("joke");
+  document.getElementById("insertJoke").setAttribute("class", "joke");
 
   readAloud(randomNumber);
 
