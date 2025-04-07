@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .bulb {
+      background: yellow;
+    }
+    .bulb-container {
+      height: 341px;
+      width: 341px;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  
+  <button onclick="alert('Alert is clicked')">Alert</button>
+  <button onclick="alert('Alert is functioned')">Alert function</button>
+  <button onclick="alert('Alert is outstanding')">Alert performnce</button>
+
+
+  <h1>Bookmarks</h1>
+  
+  <!-- <a href="https://google.com"><button id="gog">Google</button></a> -->
+  <button id="gog">Google</button>
+
+  <a href="https://twitter.com"><button id="twt">Twitter</button></a>
+  <a href="https://youtube.com"><button id="you">Youtube</button></a>
+  
+
+
+  <div id="bulb" class="bulb-container bulb">
+    Bulb
+  </div>
+
+
+  <script>
+    document.getElementById("gog").addEventListener('click', function(e) {
+
+      window.location = "https://google.com";
+    });
+
+    
+
+    setInterval(() => {
+      document.getElementById('bulb').classList.toggle('bulb');
+    }, 300);
+
+
+    // setInterval(async () => {
+    
+    //   console.log(await fetch('https://jsonplaceholder.typicode.com/todos/1'));
+      
+    // }, 3000);
+
+  </script>
+</body>
+</html>

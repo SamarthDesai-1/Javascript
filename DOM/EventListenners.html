@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <button id="btn">Click me</button>
+    </div>
+
+    <script>
+      let x = (e) => {
+
+        /** e is an event listener. */
+        console.log(e);
+        
+        console.log(e.target);
+        console.log(e.shiftKey);
+        console.log(e.type);
+        console.log(e.currentTarget);
+        console.log(e.clientX);
+        console.log(e.clientY);
+
+      };
+
+      btn.addEventListener("click", x);
+
+      let y = (e) => {
+        alert("Hello World 2");
+      };
+
+      btn.addEventListener("click", y);
+
+      // let a = prompt("What is your favourite number?");
+
+      // if (a == "2") {
+      //   btn.removeEventListener("click", x);
+      // }
+
+    </script>
+  </body>
+</html>
