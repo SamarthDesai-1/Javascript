@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <h1>Callback</h1>
+  
+  <script>
+    function loadScript(url, callback) {
+      let script = document.createElement("script");
+      script.src = url;
+      script.onload = () => {
+        console.log("Script loaded successfully : " + url);
+
+        callback(null, url);
+      }
+
+      script.onerror = () => {
+        console.log("Script failed to load : " + url);
+
+        callback(new Error("Src got some error"));
+      }
+
+      document.body.appendChild(script);
+    }
+
+    function hello(error, src) {
+      
+      if (error) {
+        console.log(error);
+        return;
+      }
+    }
+
+    function bye() {
+      alert("Bye world");
+    }
+
+    loadScript("https://cdn.jsde livr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js", hello);
+
+  </script>
+
+</body>
+</html>
