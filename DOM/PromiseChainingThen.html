@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Promise chaining</h1>
+
+  <button class="btn">LoadScript</button>
+
+  <script>
+
+    /**
+     
+    let p = new Promise((resolve, reject) => {
+
+      setTimeout(() => {
+        console.log('Resolved after 2 seconds');
+        resolve(24);
+      }, 2000);
+    });
+
+
+    p.then((value) => {
+      console.log(value);
+
+      let px = new Promise((resolve, reject) => {
+
+        setTimeout(() => resolve("Promise 2"), 3000);
+      });
+
+      return px;
+
+    }).then((value) => {
+      console.log("We're done : " + value);
+
+      return 56;
+    }).then((value) => {
+
+      console.log(value);
+    })
+
+    */
+
+    const url = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js";
+
+
+    let btn = document.getElementsByClassName("btn")[0].addEventListener('click', function (e) {
+
+      const loadScript = (url) => {
+
+        return new Promise((resolve, reject) => {
+
+          let script = document.createElement("script");
+          script.src = url;
+          document.body.appendChild(script);
+          
+          script.onload = () => {
+            resolve("Script has been loaded sir.");
+          }
+
+          script.onerror = () => { reject(0) };
+
+        });
+
+      }
+      
+      
+      let p1 = loadScript(url).then((value) => {
+
+        console.log(value);
+        return loadScript(url);
+
+      }).then((value) => {
+        console.log("Second script ready");
+
+      }).catch((error) => {
+        
+        console.log(new Error("Script can't be loaded due to inconsistent network flow."));
+      })
+    });
+
+
+
+  </script>
+</body>
+</html>

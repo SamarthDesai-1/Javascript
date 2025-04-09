@@ -12,6 +12,56 @@
     console.log("This is callback hell and pyramid of doom tutorial.");
 
 
+    function loadScript(url, callback) {
+      let script = document.createElement("script");
+      script.src = url;
+      script.onload = () => {
+        console.log("Script loaded successfully : " + url);
+
+        callback(null, url);
+      }
+
+      script.onerror = () => {
+        console.log("Script failed to load : " + url);
+
+        callback(new Error("Src got some error"));
+      }
+
+      document.body.appendChild(script);
+    }
+
+
+   
+
+    loadScript("https://cdn.jsde livr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js",  function hello(error, src) {
+      
+      if (error) {
+        console.log(error);
+        sendEmergencyMessageToCeo();
+        return;
+      }
+
+      loadScript("https://cdn.jsde livr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js",  function hello(error, src) {
+      
+        if (error) {
+          console.log(error);
+          sendEmergencyMessageToCeo();
+          return;
+        }
+
+        loadScript("https://cdn.jsde livr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js",  function hello(error, src) {
+      
+          if (error) {
+            console.log(error);
+            sendEmergencyMessageToCeo();
+            return;
+          }
+
+          loadScript("https://cdn.jsde livr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js",  function hello(error, src) { });
+        });
+      });
+    });
+
   </script>
 </body>
 </html>

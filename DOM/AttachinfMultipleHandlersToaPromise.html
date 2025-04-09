@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <button class="btn">Promise</button>
+  
+  <script>
+
+    let btn = document.getElementsByClassName('btn')[0].addEventListener('click', (e) => {
+      
+      let p = new Promise((resolve, reject) => {
+        alert("I'm not resolved yet.");
+  
+        setTimeout(() => {
+          
+          resolve(1);
+        }, 2000);
+      });
+
+
+      p.then((value) => {
+        console.log("Congratulations promise has been resolved.");
+        
+        return new Promise((resolve, reject) => {
+          
+          setTimeout(() => {
+            
+            resolve(4);
+          }, 4000);
+        });
+
+        /** OR */
+
+        /** This below return value is resolved as a Promise*/
+        // return 4; 
+
+      }).then((value) => { console.log(`Promise resolve value is : ${value}.`) })
+
+      
+      p.then(() => {
+        const tableOf = 5;
+
+        for (let i = 1; i <= 10; i++) 
+          console.log(`${tableOf} * ${i} = ${tableOf * i}`);
+        
+
+      })
+    })
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <h1>Promises</h1>
+
+  <script>
+    let p = new Promise(function(resolve, reject) {
+
+      console.log("Promise is pending");
+
+      setTimeout(function () {
+
+        alert("I'm a promise, and I'm fulfilled");
+        resolve(true);
+
+      }, 5000);
+    });
+
+    let px = new Promise(function(resolve, reject) {
+
+      console.log("Promise is pending");
+
+      setTimeout(function () {
+
+        alert("I'm a promise, and I'm rejected");
+        reject(new Error("I'm an error"));
+
+      }, 5000);
+    });
+
+
+    console.log(p);
+    console.log(px);
+
+    /** To get the value */
+    p.then((value) => console.log(value));
+
+    /** To catch the error */
+    px.catch((error) => console.log("Some error occurred in PX."));
+
+
+    px.then((value) => {
+      console.log(value);
+    }, (error) => {
+      console.log(error);
+    })
+
+    
+    // console.log("Hello");
+
+    // setTimeout(function() {
+    //   console.log("Hello 2 seconds");
+    // }, 2000);
+
+
+    // console.log("My name is Samarth R Desai");
+
+
+
+    let promise = new Promise((resolve, reject) => {
+
+      setTimeout(() => resolve("Done"), 2000);
+    });
+
+    promise.then(alert);
+
+  </script>
+</body>
+</html>
