@@ -12,10 +12,66 @@
 
   <script>
     let btn = document.getElementsByClassName("btn")[0].addEventListener('click', (e) => {
-
       console.log("Async Await demonstration");
 
+      
+      async function hello() {
 
+        let suratWeather = new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve("-27 degrees");
+          }, 3000);
+        })
+  
+        let bangloreWeather = new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve("-18 degrees");
+          }, 7000);
+        })
+
+        // suratWeather.then(alert);
+        // bangloreWeather.then(alert);
+        
+        console.log("Fetching surat weather.");
+        let suratData = await suratWeather;
+        console.log("Surat weather has been fetched...!!");
+        console.log("Fetched surat weather : " + suratData);
+        
+        console.log("Fetching banglore weather.");
+        let bangloreData = await bangloreWeather;
+        console.log("Banglore weather has been fetched...!!");
+        console.log("Fetched banglore weather : " + bangloreData);
+
+        return [suratData, bangloreData];
+      }
+
+
+      async function gello() {
+        return "Gello";
+      }
+
+
+
+
+      async function main() {
+        let a = await hello();
+        // a.then((value) => {
+        //   console.log(value);
+        // })
+
+        console.log(a);
+
+        let b = await gello();
+        // b.then((value) => {
+        //   console.log(value);
+        // })
+
+        console.log(b);
+      }
+
+
+      
+      main();
     });
   </script>
 </body>
