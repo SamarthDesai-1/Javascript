@@ -79,13 +79,13 @@ const formatNumber = (strNumber) => {
 
 
 
-const process = () => {
+const process = async () => {
   
   let principleAmount = Number.parseInt(document.getElementById("amt").value);
   let interestRate = Number.parseInt(document.getElementById("int").value);
   let timePeriod = Number.parseInt(document.getElementById("tm").value);
 
-  document.getElementById("compoundedValue").innerHTML = '$' + formatNumber(String(calculateCompoundingValue(principleAmount, interestRate, timePeriod)));
+  document.getElementById("compoundedValue").innerHTML ='$' + formatNumber(String(calculateCompoundingValue(principleAmount, interestRate, timePeriod)));
 
   document.getElementById("compoundedValue").classList.add("format");
 }

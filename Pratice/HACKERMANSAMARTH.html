@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+    <style>
+      * {
+        font-family: 'inconsolata', sans-serif;
+      }
+      body {
+        background: black;
+        color: rgb(22, 236, 22);
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .box {
+        background: black;
+        border: 2px solid rgb(22, 236, 22);
+        outline: none;
+        color: rgb(22, 236, 22);
+        font-size: 20px;
+        font-weight: bold;
+        border-radius: 5px;
+        padding: 10px;
+      }
+      .btn {
+        padding: 10px;
+        width: 75px;
+        margin-top: 10px;
+        background-color: black;
+        color: rgb(22, 236, 22);
+        border-color: rgb(22, 236, 22);
+        border-radius: 5px;
+        outline: none;
+        font-weight: bold;
+        font-size: 15px;
+        cursor: pointer;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>HackerX</h1>
+    <input type="text" class="box">
+    <br>
+    <button onclick="startHack()" class="btn">Hack</button>
+    <div id="terminal">
+
+    </div>
+
+    <script>
+      const mobile = "+91 85632 85695";
+
+      const messages = [
+        "Initalizing Hack tool...",
+        "Measuring procrastination coefficient...",
+        "Connecting to facebook...",
+        "Connecting to server...",
+        "Connection failed retrying...",
+        "Mapping preferred pizza toppings graph...",
+        "Connecting to alternate server...",
+        "Categorizing playlist embarrassment factor...",
+        "Connected successfully, test case passed...",
+        "Quantifying cat video viewing metrics...",
+        // `Username: ${username} found on the web sockets...`,
+        `Username: John Camm found on the web sockets...`,
+        "Trying brute force...",
+        "200K passwords tried....",
+        "Match not found...",
+        "Another 200K passwords tried...",
+        "Match not found, yet....",
+        "Another 200K passwords tried...",
+        "Match found...",
+        // `Accessing all accounts of ${username}...`,
+        `Accessing all accounts...`,
+        "Your facebook username is fetched and sent for further processing...",
+        `Mobile number ${mobile}...`,
+        "Analyzing cookie preferences...",
+        "Calculating personality matrix based on emoji usage...",
+        "Scanning social media activity patterns...",
+        "Decoding predictive text history...",
+        "Triangulating coffee consumption patterns...",
+        "Modeling sleep schedule inconsistencies...",
+        "Recalibrating quantum flux capacitors...",
+        "Bypassing mainframe security protocols...",
+        "Downloading more RAM...",
+        "Enhancing visual interface at 300%...",
+        "Activating neural network simulation...",
+        "Deploying virtual reality environment...",
+        "Scanning for alien transmissions...",
+        "Overriding coffee machine settings...",
+        "Converting cat pictures to binary...",
+        "Unlocking achievement: Ultimate Coder",
+        "Systen hack successfully.",
+        
+      ];
+
+
+      let terminal = document.getElementById("terminal");
+      let currentMessageElement = null;
+
+      function startHack() {
+        console.log("Start Hacking");
+
+        terminal.innerHTML = "";
+        processMessage(0);
+      }
+
+      function processMessage(index) {
+        if (index > messages.length) {
+          let completedElement = document.createElement("div");
+          completedElement.textContent = "Hack completed successfully...!";
+          terminal.appendChild(completedElement);
+          terminal.scrollTop = terminal.scrollHeight;
+          return;
+        }
+
+        currentMessageElement = document.createElement("div");
+        terminal.appendChild(currentMessageElement);
+
+        let percent = 1;
+        updatePercent();
+
+
+        function updatePercent() {
+          currentMessageElement.textContent = messages[index] + percent + "%";
+
+          terminal.scrollTop = terminal.scrollHeight;
+          percent++;
+
+          if (percent <= 100) {
+            setTimeout(updatePercent, 10);
+          }
+          else {
+            setTimeout(() => {
+              processMessage(index + 1);
+            }, 200);
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

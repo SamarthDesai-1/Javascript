@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hackerman</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      font-family: 'inconsolata', sans-serif;
+    }
+    body {
+      background: black;
+      color: rgb(22, 236, 22);
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hackerman</h1>
+  <button class="btn">Hack</button>
+
+  <div id="text">
+
+  </div>
+
+  <script>
+    document.getElementsByClassName('btn')[0].addEventListener('click', () => {
+      console.log("Hackerman initiated.");
+
+
+      const a = [
+        "Initalizing Hack tool...",
+        "Measuring procrastination coefficient...",
+        "Connecting to facebook...",
+        "Connecting to server...",
+        "Connection failed retrying...",
+        "Mapping preferred pizza toppings graph...",
+        "Connecting to alternate server...",
+        "Categorizing playlist embarrassment factor...",
+        "Connected successfully, test case passed...",
+        "Quantifying cat video viewing metrics...",
+        "Username: John Camm...",
+        "Trying brute force...",
+        "200K passwords tried....",
+        "Match not found",
+        "Another 200K passwords tried",
+        "Match not found, yet....",
+        "Another 200K passwords tried",
+        "Match found...",
+        "Accessing accounts...",
+        "Your facebook username is fetched and sent for further processing...",
+        "Mobile number +91 85632 85695...",
+        "Analyzing cookie preferences...",
+        "Calculating personality matrix based on emoji usage...",
+        "Scanning social media activity patterns...",
+        "Decoding predictive text history...",
+        "Triangulating coffee consumption patterns...",
+        "Modeling sleep schedule inconsistencies...",
+        "Systen hack successfully."
+      ]
+
+
+      const sleep = async (seconds) => {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve(true);
+          }, seconds * 1000);
+        })
+      }
+
+
+      let hack = async (message) => {
+        await sleep(2);
+        console.log(message);
+        text.innerHTML = text.innerHTML + message + "<br>";
+      }
+
+      /** IIFE function */ 
+      (async () => {
+        for (let i = 0; i < a.length; i++) {
+          await hack(a[i]);
+        }
+      })()
+
+      hack();
+    })
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Custom Error</h1>
+  <button class="btn">Custom Error</button>
+
+  <script>
+    document.getElementsByClassName('btn')[0].addEventListener('click', (e) => {
+
+      console.log('Custom Error');
+
+
+      // try {
+      //   // throw new Error("Samarth is no");
+      //   throw new ReferenceError("Samarth is no");
+      //   console.log(harry);
+
+      // } catch (error) {
+      //   console.log(error.name);
+      //   console.log(error.message);
+      //   console.log(error.stack);
+      // }
+
+
+
+
+      // try {
+
+      //   let age = Number.parseInt(prompt("Enter your age : "));
+      //   if (age > 150) {
+      //     throw new ReferenceError("This is probably not true");
+      //   }
+      // }
+      // catch (error) {
+      //   console.log(error);
+      //   console.log(p);
+      // }
+      // finally {
+      //   console.log("I'll run every single time.");
+      // }
+
+
+      // console.log('Script is still running');
+
+
+
+      let f = () => {
+
+        try {
+          let a = 0;
+          console.log('Program ran successfully');
+
+          return;
+        }
+        catch (error) {
+          console.log(error);
+        }
+        finally {
+          console.log("I'll run every single time.");
+        }
+      }
+
+      f();
+      console.log('end');
+      
+    });
+  </script>
+</body>
+</html>
