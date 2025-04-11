@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Local Storage</h1>
+  <h1>Session Storage</h1>
+
+  <button class="btn">Local Storage</button>
+  <button class="btn">Session Storage</button>
+
+  <script>
+    document.getElementsByClassName('btn')[0].addEventListener('click', () => {
+      console.log("Local storage");
+
+      localStorage.setItem("name", "Samarth");
+      let value = localStorage.getItem("name");
+      console.log(value);
+
+      // localStorage.removeItem("name");
+
+      /** Clears everything from localstorage */
+      // localStorage.clear();
+
+      console.log(localStorage.length);
+      console.log(localStorage.key(0));
+
+    })
+
+
+    document.getElementsByClassName('btn')[1].addEventListener('click', () => {
+      console.log("Session storage");
+
+      /** Same methods as localStorage */
+
+    })
+
+    window.onstorage = (e) => {
+      alert("Changed");
+
+      console.log(e);
+    }
+
+  </script>
+</body>
+</html>

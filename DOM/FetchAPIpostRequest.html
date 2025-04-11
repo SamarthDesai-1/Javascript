@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+
+    <button onclick="main()">Fetch API</button>
+    <script>
+
+      const createTodo = async (todo) => {
+
+        let options = {
+          method: "POST",
+          headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(todo)
+      };
+      
+      let p = await fetch("https://jsonplaceholder.typicode.com/posts", options);
+      let response = await p.json();
+
+      return response;
+    }
+
+
+    const getTodo = async (id) => {
+      let p = await fetch('https://jsonplaceholder.typicode.com/posts/' + id);
+      let response = await p.json();
+      
+      return response;
+    }
+
+
+    const main = async () => {
+      let todo = {
+        title: "Samarth",
+        body: "Desai",
+        userID: 24
+      }
+
+      console.log(await createTodo(todo));
+      
+      console.log(await getTodo(101));
+    };
+
+
+
+
+    </script>
+  </body>
+</html>

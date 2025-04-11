@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <h1>Cookies</h1>
+  <button class="btn">Cookies</button>
+
+  <script>
+    document.getElementsByClassName('btn')[0].addEventListener('click', () => {
+      console.log("Cookies");
+
+      console.log(document.cookie);
+      document.cookie = "name=Samarth90848946500";
+      document.cookie = "name=Jitesh894651";
+      console.log(document.cookie);
+
+      let key = prompt("Enter your key : ");
+      let value = prompt("Enter your value : ");
+
+      document.cookie = `${encodeURIComponent(key)}=${encodeURIComponent(value)}`;
+
+
+      /** For decoding encodeURICommponent */
+      decodeURIComponent();
+    })
+  </script>
+</body>
+</html>

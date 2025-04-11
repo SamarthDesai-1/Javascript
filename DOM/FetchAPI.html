@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fetch API</title>
+
+</head>
+<body>
+  <h1>Fetch API</h1>
+  <button class="btn">Fetch API</button>
+
+  <script>
+    /** https://api.frankfurter.dev/v1/currencies 
+     * https://api.frankfurter.dev/v1/latest?base=${from}&symbols=${to}
+    */
+    document.getElementsByClassName('btn')[0].addEventListener('click', (e) => {
+      console.log("Fetch API");
+
+      const from = 'USD';
+      const to = 'INR';
+      let p = fetch(`https://api.frankfurter.dev/v1/currencies`);
+
+      p.then((response) => {
+        console.log(response.status);
+        console.log(response.ok);
+        console.log(response.headers);
+        return response.json();
+
+      }).then((response) => {
+        console.log(response);
+      })
+
+      
+    })
+  </script>
+</body>
+</html>
