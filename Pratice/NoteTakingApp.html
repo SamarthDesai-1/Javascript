@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quick Note</title>
+  <style>
+
+  </style>
+</head>
+<body>
+  <h1>Note App</h1>
+  <textarea name="" id="textnote" cols="30" rows="10"></textarea>
+  <br>
+  <button onclick="saveNote()">Save</button>
+  <button onclick="clearNote()">Clear all notes</button>
+
+
+  <table>
+    <thead>
+      <tr>
+        <th>All notes</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody id="loadData">
+
+    </tbody>
+  </table>
+
+  <script>
+
+    /* Maximum number of notes that user can create. */
+    const maxNotes = 20;
+
+    const clearTextArea = () => {
+      document.getElementById("textnote").value = "";
+    };
+    
+    const renderData = () => {
+      let html = '';
+
+      for (let i = 0; i < maxNotes; i++) {
+
+        let value = localStorage.getItem(i);
+
+        if (value == null) {
+          continue;
+        }
+        else {
+          
+          html += `
+            <tr>
+              <td id='${i}'>${value}</td>
+              <td><button onclick='editNote(${i})'>Edit</button></td>
+              <td><button onclick='deleteNote(${i})'>Delete</button></td>
+            </tr>
+          `;
+        }
+      }
+        
+      document.getElementById("loadData").innerHTML = html;
+    };
+      
+    (() => {
+      renderData();
+    })()
+
+    const saveNote = () => {
+      const note = document.getElementById("textnote").value;
+
+      if (note == "") {
+        alert("You first create your note in text box, then you can click the save button");
+        return;
+      }
+
+      if (localStorage.length == 0) {
+        localStorage.setItem(0, note);
+      }
+      else {
+        let previousIndex = localStorage.length - 1;
+        localStorage.setItem(previousIndex + 1, note);
+      }
+
+      clearTextArea();
+      renderData();
+    };
+
+    const clearNote = () => {
+      localStorage.clear();
+      location.reload();
+    };
+
+
+    const editNote = (id) => {
+      document.getElementById("textnote").innerHTML = localStorage.getItem(id);
+      let newText = prompt(`Enter notes to be update`, localStorage.getItem(id));
+      localStorage.setItem(id, newText);
+      renderData();
+    }
+  
+    const deleteNote = (id) => {
+      let confirmDelete = confirm("Are you sure you want to delete this particular note?");
+
+      if (confirmDelete) {
+        localStorage.removeItem(id);
+      }
+
+      renderData();
+    }
+
+  </script>
+</body>
+</html>
