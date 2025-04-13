@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Constuctor</title>
+</head>
+<body>
+  <h1>Constructor</h1>
+  <button onclick="load()">Constructor</button>
+
+  <script>
+    const load = () => {
+      
+      class RailwayForm {
+        
+        constructor(name, trainNo) {
+          console.log("Constructor called for : " + name + " " + trainNo);
+          this.name = name;
+          this.trainNo = trainNo;
+        }
+
+        submit() {
+          console.log(this.name + " form is submitted for train number : " + this.trainNo);
+        }
+        cancel() {
+          console.log(this.name + " canceled this form for train number : " + this.trainNo);
+        }
+      }
+
+      let samarth = new RailwayForm("Samarth", 125420);
+
+      let shreyas1 = new RailwayForm("Shreyas", 222420);
+      let shreyas2 = new RailwayForm("Shreyas", 2229211);
+
+      samarth.submit();
+      shreyas1.submit();
+      shreyas2.submit();
+
+      shreyas1.cancel();
+    };
+
+  </script>
+  <script src="ConstructorScript2.js"></script>
+</body>
+</html>

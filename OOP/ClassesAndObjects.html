@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Classes and objects</h1>
+
+  <button onclick="load()">Classes & Objects</button>
+
+  <script>
+    const load = () => {
+      console.log("Classes and objects");
+
+      class RailwayForm {
+        submit() {
+          alert(this.name + " form is submitted for train number : " + this.trainNo);
+        }
+        cancel() {
+          alert(this.name + " canceled this form for train number : " + this.trainNo);
+        }
+        fill(name, trainNo) {
+          this.name = name;
+          this.trainNo = trainNo;
+        }
+      }
+
+      let samarth = new RailwayForm();
+      samarth.fill("Samarth", 125420);
+
+      let shreyas1 = new RailwayForm();
+      let shreyas2 = new RailwayForm();
+      shreyas1.fill("Shreyas", 222420);
+      shreyas2.fill("Shreyas", 2229211);
+
+      samarth.submit();
+      shreyas1.submit();
+      shreyas2.submit();
+
+      shreyas1.cancel();
+    };
+  </script>
+</body>
+</html>
