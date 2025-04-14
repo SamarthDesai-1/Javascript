@@ -16,13 +16,16 @@
   <button onclick="saveNote()">Save</button>
   <button onclick="clearNote()">Clear all notes</button>
 
+  <br> 
 
-  <table>
+  <span id="text"></span>
+
+  <table id="tab">
     <thead>
       <tr>
-        <th>All notes</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        <th class="hid">All notes</th>
+        <th class="hid">Edit</th>
+        <th class="hid">Delete</th>
       </tr>
     </thead>
     <tbody id="loadData">
@@ -33,8 +36,7 @@
   <script>
 
     /* Maximum number of notes that user can create. */
-    const maxNotes = 20;
-    
+    const maxNotes = 20;    
 
     const clearTextArea = () => {
       document.getElementById("textnote").value = "";
@@ -52,7 +54,7 @@
         else {
           html += `
             <tr>
-              <td id='${i}'>${value}</td>
+              <td>${value}</td>
               <td><button onclick='editNote(${i})'>Edit</button></td>
               <td><button onclick='deleteNote(${i})'>Delete</button></td>
             </tr>
@@ -63,6 +65,7 @@
       document.getElementById("loadData").innerHTML = html;
     };
       
+    /* This is IIFE function */ 
     (() => {
       renderData();
     })()
@@ -94,7 +97,6 @@
 
 
     const editNote = (id) => {
-      document.getElementById("textnote").innerHTML = localStorage.getItem(id);
       let newText = prompt(`Enter notes to be update`, localStorage.getItem(id));
       localStorage.setItem(id, newText);
       renderData();
