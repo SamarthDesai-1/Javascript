@@ -20,4 +20,5 @@ let a = () => {
 
   let d = await a();
   console.log(d);
+  
 })()

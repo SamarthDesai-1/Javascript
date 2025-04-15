@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Note App</h1>
+  <textarea name="" id="textnote" cols="30" rows="10"></textarea>
+  <br>
+  <button onclick="saveNote()">Save</button>
+  <button onclick="clearNote()">Clear all notes</button>
+
+  <br> 
+
+  <span id="text"></span>
+
+  <table id="tab">
+    <thead>
+      <tr>
+        <th class="hid">Sr.no</th>
+        <th class="hid">All notes</th>
+        <th class="hid">Edit</th>
+        <th class="hid">Delete</th>
+      </tr>
+    </thead>
+    <tbody id="loadData">
+
+    </tbody>
+  </table>
+
+  <script>
+
+    let todos = [
+      {
+        id: 0,
+        task: "Bring breads"
+      },
+      {
+        id: 1,
+        task: "Go to School"
+      },
+      {
+        id: 2,
+        task: "Do homework"
+      },
+      {
+        id: 3,
+        task: "Do some code"
+      },
+    ];
+    
+    
+    const saveNote = () => {
+      let text = document.getElementById("textnote").value;
+      if (text == "") {
+        alert("You first create your note in text box, then you can click the save button");
+        return;
+      }
+      const newTodo = {
+        id: todos[todos.length - 1].id + 1,
+        task: text
+      }
+      
+      todos.push(newTodo);
+      document.getElementById("textnote").value = "";
+      
+      renderData();
+      return;
+    } 
+    
+    
+    const deleteTodo = (index) => {
+      newTodo = todos.filter(elem => elem.id !== index);
+      todos = newTodo;
+      renderData();
+      return;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    const findIndex = (id) => {
+      todos.forEach(elem => {
+        if (elem.id === id) {
+          console.log("whipeimfuneuugun : " + elem.task);
+          return elem.task;
+        }
+      });
+      
+      return "No task found";
+    }
+    
+    const editTodo = async (index) => {
+      let value = todos[index].task;
+      console.log(value);
+      let newText = prompt(`Enter notes to be update`, value);
+      
+      todos[index].task = newText;
+      renderData();
+      return;
+    }
+    
+
+
+
+
+
+
+    
+
+    const renderData = () => {
+      let html = '';
+      
+      todos.forEach(elem => {
+        html += `
+          <tr>
+            <td>${elem.id + 1}</td>
+            <td>${elem.task}</td>
+            <td><button onclick='editTodo(${elem.id})'>Edit</button></td>
+            <td><button onclick='deleteTodo(${elem.id})'>Delete</button></td>
+          </tr>
+        `;
+      })
+  
+      document.getElementById("loadData").innerHTML = html;
+    };
+
+
+    (() => {
+      renderData();
+    })()
+
+
+    const clearNote = () => {
+      document.getElementById("loadData").innerHTML = "";
+    };
+  </script>
+</body>
+</html>
