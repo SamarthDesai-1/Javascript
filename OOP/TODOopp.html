@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Note App</h1>
+  <textarea name="" id="textnote" cols="30" rows="10"></textarea>
+  <br>
+  <button onclick="saveNote()">Save</button>
+  <button onclick="clearNote()">Clear all notes</button>
+
+  <br> 
+
+  <span id="text"></span>
+  <span id="render"></span>
+
+  <script>
+
+    class Note {
+
+      constructor(ArrayOfObject) {
+        this.ArrayOfObject = ArrayOfObject;
+      }
+
+      saveNote() {
+        let text = document.getElementById("textnote").value;
+        let todos = this.ArrayOfObject;
+
+        console.log(text);
+        if (text == "") {
+          alert("You first create your note in text box, then you can click the save button");
+          return;
+        }
+        const newTodo = {
+          id: todos.length === 0 ? 0 : todos[todos.length - 1].id + 1,
+          task: text
+        }
+        todos.push(newTodo);
+        document.getElementById("textnote").value = "";
+        renderData();
+        return;
+      }
+
+      deleteNote(index) {
+        let todos = this.ArrayOfObject;
+        return todos.filter(elem => elem.id !== index);
+      }
+
+      editNote(index) {
+        let todos = this.ArrayOfObject;
+        let value = todos[index].task;
+
+        let newText = prompt(`Enter notes to be update`, value);
+        
+        todos[index].task = newText;
+        renderData();
+
+        return;
+      }
+
+      clearNote() {
+        document.getElementById("loadData").innerHTML = "";
+        document.getElementById("render").innerHTML = "Notes not taken yet.!";
+        return;
+      }
+
+        renderData() {
+          let html = `
+          <table id="tab">
+            <thead>
+              <tr>
+                <th class="hid">All notes</th>
+                <th class="hid">Edit</th>
+                <th class="hid">Delete</th>
+              </tr>
+            </thead>
+            <tbody id="loadData">
+
+          `;
+          console.log(todos);
+          
+          todos.forEach(elem => {
+            html += `
+            <tr>
+              <td>${elem.task}</td>
+              <td><button onclick='editNote(${elem.id})'>Edit</button></td>
+              <td><button onclick='deleteNote(${elem.id})'>Delete</button></td>
+              </tr>
+            `;
+          })
+
+          html += `
+              </tbody>
+            </table>
+          `;
+          
+          if (todos.length === 0) {
+            document.getElementById("tab").remove();
+            document.getElementById("render").innerHTML = "Notes not taken yet.!";
+            return;
+          }
+          document.getElementById("render").innerHTML = html;
+          return;
+        }
+    }
+
+
+    let todos = [
+      {
+        id: 0,
+        task: "Bring breads"
+      },
+      {
+        id: 1,
+        task: "Go to School"
+      },
+      {
+        id: 2,
+        task: "Do homework"
+      },
+      {
+        id: 3,
+        task: "Do some code"
+      },
+    ];
+    
+    
+    const saveNote = () => {
+      let saveNote = new Note(todos).saveNote();
+      return;
+    };
+    
+    const deleteNote = (index) => {
+      let deleteNote = new Note(todos);
+      todos = deleteNote.deleteNote(index);
+      renderData();
+      return;
+    };
+    
+    const editNote = async (index) => {
+      let editNote = new Note(todos).editNote(index);
+      return;
+    };
+  
+    const clearNote = () => {
+      let clearNote = new Note(todos).clearNote();
+      return;
+    };
+
+
+    const renderData = () => {
+      let render = new Note(todos).renderData();
+      return;
+    };
+
+
+    (() => {
+      renderData();
+    })()
+
+  </script>
+</body>
+</html>

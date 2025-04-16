@@ -15,23 +15,9 @@
   <br> 
 
   <span id="text"></span>
-
-  <table id="tab">
-    <thead>
-      <tr>
-        <th class="hid">Sr.no</th>
-        <th class="hid">All notes</th>
-        <th class="hid">Edit</th>
-        <th class="hid">Delete</th>
-      </tr>
-    </thead>
-    <tbody id="loadData">
-
-    </tbody>
-  </table>
+  <span id="render"></span>
 
   <script>
-
     let todos = [
       {
         id: 0,
@@ -59,7 +45,7 @@
         return;
       }
       const newTodo = {
-        id: todos[todos.length - 1].id + 1,
+        id: todos.length === 0 ? 0 : todos[todos.length - 1].id + 1,
         task: text
       }
       
@@ -70,34 +56,12 @@
       return;
     } 
     
-    
     const deleteTodo = (index) => {
+      console.log(index);
       newTodo = todos.filter(elem => elem.id !== index);
       todos = newTodo;
       renderData();
       return;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-    const findIndex = (id) => {
-      todos.forEach(elem => {
-        if (elem.id === id) {
-          console.log("whipeimfuneuugun : " + elem.task);
-          return elem.task;
-        }
-      });
-      
-      return "No task found";
     }
     
     const editTodo = async (index) => {
@@ -109,30 +73,52 @@
       renderData();
       return;
     }
-    
+  
+    const clearNote = () => {
+      document.getElementById("loadData").innerHTML = "";
+      document.getElementById("render").innerHTML = "Notes not taken yet.!";
+      return;
+    };
 
-
-
-
-
-
-    
 
     const renderData = () => {
-      let html = '';
+
+      let html = `
+        <table id="tab">
+          <thead>
+            <tr>
+              <th class="hid">All notes</th>
+              <th class="hid">Edit</th>
+              <th class="hid">Delete</th>
+            </tr>
+          </thead>
+          <tbody id="loadData">
+
+      `;
+      console.log(todos);
       
       todos.forEach(elem => {
         html += `
-          <tr>
-            <td>${elem.id + 1}</td>
-            <td>${elem.task}</td>
-            <td><button onclick='editTodo(${elem.id})'>Edit</button></td>
-            <td><button onclick='deleteTodo(${elem.id})'>Delete</button></td>
+        <tr>
+          <td>${elem.task}</td>
+          <td><button onclick='editTodo(${elem.id})'>Edit</button></td>
+          <td><button onclick='deleteTodo(${elem.id})'>Delete</button></td>
           </tr>
         `;
       })
-  
-      document.getElementById("loadData").innerHTML = html;
+
+      html += `
+          </tbody>
+        </table>
+      `;
+
+      if (todos.length === 0) {
+        document.getElementById("tab").remove();
+        document.getElementById("render").innerHTML = "Notes not taken yet.!";
+        return;
+      }
+        
+      document.getElementById("render").innerHTML = html;
     };
 
 
@@ -140,10 +126,6 @@
       renderData();
     })()
 
-
-    const clearNote = () => {
-      document.getElementById("loadData").innerHTML = "";
-    };
   </script>
 </body>
 </html>
