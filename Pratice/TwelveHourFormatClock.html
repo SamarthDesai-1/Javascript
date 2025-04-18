@@ -35,12 +35,17 @@
       
     }
     .box {
-      padding: 5px;
+      padding: 8px;
       margin-bottom: 3.5px;
       width: 280px;
       font-weight: bold;
       text-decoration: none;
       outline: none;
+    }
+    .disable {
+      opacity: 0.6;
+      pointer-events: none;
+      cursor: none;
     }
     .radio-box {
       /* border: 2px solid purple; */
@@ -56,6 +61,7 @@
       border-radius: 10px;
       font-weight: bold;
       cursor: pointer;
+      outline: none;
     }
     .main {
       /* border: 1px solid black; */
@@ -65,104 +71,207 @@
       border-radius: 10px;
       box-shadow: 0 0 10px 0 rgba(187, 187, 173, 0.8);
     }
+    .cancel {
+      background-color: red;
+    }
+    select {
+      padding: 7px;
+      min-width: 115px;
+      outline: none;
+      border-radius: 5px;
+    }
+    .btns {
+      margin-top: 15px;
+    }
+
+    .style-clock {
+      /* border: 2px solid red; */
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .hour {
+      /* border: 2px solid black; */
+      font-size: 200px;
+      font-weight: bold;
+      color: rgb(56, 56, 218);
+    }    
+    .minute {
+      font-size: 85px;
+      font-weight: bold;
+    }
+    .second {
+      font-size: 40px;
+      font-weight: bold;
+    }
+    .container-minute-second {
+      /* border: 2px solid purple; */
+      display: flex;
+      flex-direction: column;
+    }
+    .spacer {
+      font-size: 50px;
+    }
   </style>
 </head>
 <body>
   <div class="main">
     <h1>Clock</h1>
 
-    <span id="newClock" class="clock"></span>
+    <div class="style-clock">
+      <div class="container-hour">
+        <span class="hour" id="hour">00</span>
+      </div>
+      <div class="spacer">
+        <span class="spacer">:</span>
+      </div>
+      <div class="container-minute-second">
+        <span class="minute" id="minute">00</span>
+        <span class="second" id="second">00 AM-PM</span>
+      </div>
+    </div>
     <br>
     <span id="date"></span>
 
     <div class="container">
-      <input type="number" placeholder="Hour" id="h" class="box" min="1" max="12">
-      <br>
-      <input type="number" placeholder="Minute" id="m" class="box" min="0" max="59">
-      <br>
-      <div class="radio-box">
-        <p>AM: <input type="radio" name="timezone" id="am"></p>
-        <p>PM: <input type="radio" name="timezone" id="pm"></p>
-      </div>
+      <select name="" id="">
+        <option value="Hour" selected hidden>Hour</option>
+      </select>
+      <select name="" id="">
+        <option value="Minute" selected hidden>Minute</option>
+      </select>
+      <select name="" id="">
+        <option value="AM/PM" selected hidden>AM/PM</option>
+      </select>
       <div class="btns">
-        <button onclick="setAlaram()" class="btn">Set</button>
-        <button onclick="pauseSound()" class="btn">Cancel</button>
+        <button onclick="setAlaram()" class="btn" id="set">Set</button>
+        <button onclick="cancelAlaram()" class="btn" id="cancel">Cancel</button>
       </div>
     </div>
   </div>
-  
+
 
   <script>
-    /** This clock is still now valid for set alarams like this time : 6:13 */
-
-    let date = new Date();
-    document.getElementById("date").innerHTML = date.toString().substring(0, 15);
-
+    const selectMenu = document.querySelectorAll("select");
+    const buttons = document.querySelectorAll("button");
     const options = {
       hour: 'numeric',
       minute: '2-digit',
       second: '2-digit',
       hour12: true
     };
+    let alaramTime;
+    let isSetAlaram = false;
+    let audio = new Audio('Time.mp3');
+    let date = new Date();
+
+    document.getElementById("date").innerHTML = date.toString().substring(0, 15);
+
+    for (let i = 12; i > 0; i--) {
+      i = i < 10 ? '0' + i : i; 
+      
+      let option = `<option value="${i}">${i}</option>`;
+      selectMenu[0].firstElementChild.insertAdjacentHTML("afterend", option);
+
+    }
+
+    for (let i = 59; i >= 0; i--) {
+      i = i < 10 ? '0' + i : i; 
+
+      let option = `<option value="${i}">${i}</option>`;
+      selectMenu[1].firstElementChild.insertAdjacentHTML("afterend", option);
+    }
+
+    for (let i = 2; i > 0; i--) {
+      let ampm = i == 1 ? "AM" : "PM";
+
+      let option = `<option value="${ampm}">${ampm}</option>`;
+      selectMenu[2].firstElementChild.insertAdjacentHTML("afterend", option);
+    }
+
 
     const updateClock = () => {
       let date = new Date();
 
-      const timeString = date.toLocaleTimeString('en-US', options);
-      document.getElementById("newClock").textContent = timeString;
+      let timeString = date.toLocaleTimeString('en-US', options);
+      // document.getElementById("newClock").textContent = timeString;
+
+      let lengthEqualTen = timeString.length == 10 ? true : false;
+
+      let hour;
+      let minute;
+      let second;
+
+      if (lengthEqualTen) {
+        hour = timeString.substring(0, 1)
+        minute = timeString.substring(2, 4)
+        second = timeString.substring(5, timeString.length);
+      }
+      else {
+        hout = timeString.substring(0, 2);
+        minute = timeString.substring(3, 5);
+        second = timeString.substring(6, timeString.length);
+      }
+
+      document.getElementById("hour").textContent = hour; 
+      document.getElementById("minute").textContent = minute; 
+      document.getElementById("second").textContent = second; 
+
+
+      if (timeString.length == 10) {
+        timeString = '0' + timeString;
+      }
+
+      let formattedString = timeString.substring(0, 5) + ":" + timeString.substring(9, 11);
+      if (alaramTime === formattedString) {
+        console.log("Alaram is ringing.....!!");
+        audio.play();
+        audio.loop = true;
+        isSetAlaram = true;
+
+        document.getElementById("set").classList.add("disable");
+        document.getElementById("cancel").classList.add("cancel");
+
+        Array.from(selectMenu).forEach(element => {
+          element.classList.add("disable");
+        });
+      }
     }
 
     setInterval(updateClock, 1000);
 
+    function setAlaram() {
+      let hour = selectMenu[0].value;
+      let minute = selectMenu[1].value;
+      let ampm = selectMenu[2].value;
 
+      if (hour == "Hour" || minute == "Minute" || ampm == "AM/PM") {
+        alert("First, set alaram.");
+        return;
+      }
 
+      let clientTimeString = `${hour}:${minute}:${ampm}`;
 
-    let alarms = [];
-    let intervalID = 0;
-    let audio = [];
-
-    const setAlaram = () => {
-      let intID;
-      audio = new Audio("Time.mp3");
-
-      let am = document.getElementById("am").checked;
-      let pm = document.getElementById("pm").checked;
-      let hour = Number.parseInt(document.getElementById("h").value);
-      let minute = document.getElementById("m").value;
-      let meridiem = '';
-
-      meridiem = am == true ? 'AM' : 'PM';
-      
-      intID = setInterval(() => {
-        let date = new Date();
-        const timeString = date.toLocaleTimeString('en-US', options);
-        let length = timeString.length;
-
-                
-        if (length == 10) {
-          if (hour === Number.parseInt(timeString.substring(0, 1)) && minute === timeString.substring(2, 4) && meridiem === timeString.substring(8, length)) {
-            audio.play().catch(error => console.error("Audio play is failed : ", error));
-          }
-        }
-        else {
-          if (hour === Number.parseInt(timeString.substring(0, 2)) && minute === timeString.substring(3, 5) && meridiem === timeString.substring(9, length)) {
-            audio.play().catch(error => console.error("Audio play is failed : ", error));
-          }
-        }
-
-      });
-      intervalID = intID;  
-
-      console.log(`Your alaram is set for time ${hour} : ${minute} : ${meridiem}`);
-    };
-
-
-    const pauseSound = () => {
-      console.log("Sound is paused");
-      clearInterval(intervalID);
-      audio.pause();
+      alaramTime = clientTimeString;
+      return;
     }
 
+    function cancelAlaram() {
+      alaramTime = "";
+
+      if (isSetAlaram) {
+        console.log("Your alaram is paused.................!");
+        isSetAlaram = false;
+        audio.pause();
+        document.getElementById("set").classList.remove("disable");
+        document.getElementById("cancel").classList.remove("cancel");
+
+        Array.from(selectMenu).forEach(element => {
+          element.classList.remove("disable");
+        });
+        return;
+      }
+    }
   </script>
 </body>
 </html>
