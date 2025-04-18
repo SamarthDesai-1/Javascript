@@ -4,13 +4,73 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    * {
+      font-family: "Montserrat", sans-serif;
+    }
+    .btn {
+      /* min-width: 100px; */
+      background-color: rgb(96, 96, 228);
+      color: white;
+      font-size: 15px;
+      outline: none;
+      border: none;
+      padding: 7px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .edit {
+      background-color: green;
+      min-width: 80px;
+      border: none;
+      outline: none;
+      color: white;
+      padding: 5px;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .delete {
+      background-color: red;
+      min-width: 80px;
+      border: none;
+      outline: none;
+      color: white;
+      padding: 5px;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    #render {
+      font-weight: bold;
+    }
+    #tab {
+      padding: 10px;
+    }
+    #textnote {
+      outline: none;
+      padding: 10px;
+      font-size: 15px;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+  </style>
 </head>
 <body>
   <h1>Note App</h1>
-  <textarea name="" id="textnote" cols="30" rows="10"></textarea>
+  <textarea name="" id="textnote" cols="40" rows="10"></textarea>
   <br>
-  <button onclick="saveNote()">Save</button>
-  <button onclick="clearNote()">Clear all notes</button>
+  <button onclick="saveNote()" class="btn">Save</button>
+  <button onclick="clearNote()" class="btn">Clear notes</button>
 
   <br> 
 
@@ -72,7 +132,7 @@
           <table id="tab">
             <thead>
               <tr>
-                <th class="hid">All notes</th>
+                <th class="hid">Notes</th>
                 <th class="hid">Edit</th>
                 <th class="hid">Delete</th>
               </tr>
@@ -86,8 +146,8 @@
             html += `
             <tr>
               <td>${elem.task}</td>
-              <td><button onclick='editNote(${elem.id})'>Edit</button></td>
-              <td><button onclick='deleteNote(${elem.id})'>Delete</button></td>
+              <td><button onclick='editNote(${elem.id})' class='edit'>Edit</button></td>
+              <td><button onclick='deleteNote(${elem.id})' class='delete'>Delete</button></td>
               </tr>
             `;
           })
@@ -150,12 +210,10 @@
       return;
     };
 
-
     const renderData = () => {
       let render = new Note(todos).renderData();
       return;
     };
-
 
     (() => {
       renderData();

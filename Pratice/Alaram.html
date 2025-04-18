@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Alaram</h1>
+
+  <span id="date"></span>
+  <br>
+  <span id="second"></span>
+
+  <div class="container">
+    <input type="text" placeholder="Hour" id="h">
+    <br>
+    <input type="text" placeholder="Minute" id="m">
+  </div>
+
+  <button onclick="setAlaram()">Set Alaram</button>
+  <button onclick="pauseSound()">Cancel Alaram</button>
+
+  <script>
+    let date = new Date();
+
+    document.querySelector('#date').innerHTML = date.toString().substring(0, 15);
+
+    setInterval(() => {
+      let date = new Date();
+
+      document.getElementById("second").innerHTML = `${date.getHours()} : ${date.getMinutes()} : ${date.getSeconds()}`;
+    }, 1000);
+
+    
+    let audio = {};
+    let intervalID = 0;
+
+    const setAlaram = () => {
+      let intID;
+
+      audio = new Audio("Time.mp3");
+      
+      let hour = Number.parseInt(document.getElementById("h").value);
+      let minute = Number.parseInt(document.getElementById("m").value);
+      
+      intID = setInterval(() => {
+        let date = new Date();
+        
+        if (hour === date.getHours() && minute === date.getMinutes()) {
+          audio.play().catch(error => console.error("Audio play is failed : ", error));
+        }
+      });
+      intervalID = intID;  
+    }
+
+    const pauseSound = () => {
+      clearInterval(intervalID);
+      audio.pause();
+    }
+
+  </script>
+</body>
+</html>

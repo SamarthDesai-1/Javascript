@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap"
+    rel="stylesheet"
+  />
+
+
+  <style>
+    * {
+      font-family: "Montserrat", sans-serif;
+    }
+    span {
+      font-weight: bold;
+      font-size: 20px;
+    }
+    .clock {
+      font-weight: bold;
+      font-size: 60px;
+    }
+    h1 {
+      font-size: 50px;
+    }
+    .container {
+      /* border: 2px solid black; */
+      max-width: fit-content;
+      margin-top: 15px;
+      
+    }
+    .box {
+      padding: 5px;
+      margin-bottom: 3.5px;
+      width: 280px;
+      font-weight: bold;
+      text-decoration: none;
+      outline: none;
+    }
+    .radio-box {
+      /* border: 2px solid purple; */
+      margin-left: 5px;
+    }
+    .btn {
+      min-width: 100px;
+      margin-top: 10px;
+      padding: 10px;
+      background-color: rgb(56, 56, 218);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .main {
+      /* border: 1px solid black; */
+      /* margin: auto; */
+      max-width: 375px;
+      padding: 20px 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px 0 rgba(187, 187, 173, 0.8);
+    }
+  </style>
+</head>
+<body>
+  <div class="main">
+    <h1>Clock</h1>
+
+    <span id="newClock" class="clock"></span>
+    <br>
+    <span id="date"></span>
+
+    <div class="container">
+      <input type="number" placeholder="Hour" id="h" class="box" min="1" max="12">
+      <br>
+      <input type="number" placeholder="Minute" id="m" class="box" min="0" max="59">
+      <br>
+      <div class="radio-box">
+        <p>AM: <input type="radio" name="timezone" id="am"></p>
+        <p>PM: <input type="radio" name="timezone" id="pm"></p>
+      </div>
+      <div class="btns">
+        <button onclick="setAlaram()" class="btn">Set</button>
+        <button onclick="pauseSound()" class="btn">Cancel</button>
+      </div>
+    </div>
+  </div>
+  
+
+  <script>
+    /** This clock is still now valid for set alarams like this time : 6:13 */
+
+    let date = new Date();
+    document.getElementById("date").innerHTML = date.toString().substring(0, 15);
+
+    const options = {
+      hour: 'numeric',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true
+    };
+
+    const updateClock = () => {
+      let date = new Date();
+
+      const timeString = date.toLocaleTimeString('en-US', options);
+      document.getElementById("newClock").textContent = timeString;
+    }
+
+    setInterval(updateClock, 1000);
+
+
+
+
+    let alarms = [];
+    let intervalID = 0;
+    let audio = [];
+
+    const setAlaram = () => {
+      let intID;
+      audio = new Audio("Time.mp3");
+
+      let am = document.getElementById("am").checked;
+      let pm = document.getElementById("pm").checked;
+      let hour = Number.parseInt(document.getElementById("h").value);
+      let minute = document.getElementById("m").value;
+      let meridiem = '';
+
+      meridiem = am == true ? 'AM' : 'PM';
+      
+      intID = setInterval(() => {
+        let date = new Date();
+        const timeString = date.toLocaleTimeString('en-US', options);
+        let length = timeString.length;
+
+                
+        if (length == 10) {
+          if (hour === Number.parseInt(timeString.substring(0, 1)) && minute === timeString.substring(2, 4) && meridiem === timeString.substring(8, length)) {
+            audio.play().catch(error => console.error("Audio play is failed : ", error));
+          }
+        }
+        else {
+          if (hour === Number.parseInt(timeString.substring(0, 2)) && minute === timeString.substring(3, 5) && meridiem === timeString.substring(9, length)) {
+            audio.play().catch(error => console.error("Audio play is failed : ", error));
+          }
+        }
+
+      });
+      intervalID = intID;  
+
+      console.log(`Your alaram is set for time ${hour} : ${minute} : ${meridiem}`);
+    };
+
+
+    const pauseSound = () => {
+      console.log("Sound is paused");
+      clearInterval(intervalID);
+      audio.pause();
+    }
+
+  </script>
+</body>
+</html>
