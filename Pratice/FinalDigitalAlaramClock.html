@@ -299,6 +299,13 @@
 
     setInterval(updateClock, 1000);
 
+
+    const hideNotifications = (e) => {
+      setTimeout(() => {
+        e.innerHTML = "";
+      }, 10000);
+    }
+
     function setAlaram() {
       let hour = selectMenu[0].value;
       let minute = selectMenu[1].value;
@@ -315,10 +322,7 @@
           </div>
         `;
         e.innerHTML = error;
-
-        setTimeout(() => {
-          e.innerHTML = "";
-        }, 10000);
+        hideNotifications(e);
 
         
         return;
@@ -335,9 +339,7 @@
       `;
 
       e.innerHTML = successNotify;
-      setTimeout(() => {
-        e.innerHTML = "";
-      }, 10000);
+      hideNotifications(e);
 
       return;
     }
