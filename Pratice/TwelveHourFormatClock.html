@@ -66,7 +66,7 @@
     .main {
       /* border: 1px solid black; */
       /* margin: auto; */
-      max-width: 375px;
+      max-width: 420px;
       padding: 20px 30px;
       border-radius: 10px;
       box-shadow: 0 0 10px 0 rgba(187, 187, 173, 0.8);
@@ -112,6 +112,58 @@
     .spacer {
       font-size: 50px;
     }
+
+
+    .notify {
+      border: 1px solid rgba(255, 0, 0, 0.849);
+      margin-top: 10px;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      border-radius: 5px;
+      background-color: rgb(255, 174, 174);
+      align-items: center;
+    }
+    .text-warn {
+      /* border: 1px solid black; */
+      color: red;
+      font-weight: bold;
+    }
+    .cancel-button {
+      /* border: 1px solid black; */
+      color: red;
+      font-weight: bold;
+      padding: 6px;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: red;
+      color: white;
+      font-size: 13px;
+    }
+    .text-success {
+      color: green;
+      font-weight: bold;
+    }
+    .notify-success {
+      border: 1px solid green;
+      margin-top: 10px;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      border-radius: 5px;
+      background-color: rgb(129, 247, 129);
+      align-items: center;
+    }
+    .cancel-success-button {
+      color: green;
+      font-weight: bold;
+      padding: 6px;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: green;
+      color: white;
+      font-size: 13px;
+    }
   </style>
 </head>
 <body>
@@ -141,8 +193,15 @@
         <option value="Minute" selected hidden>Minute</option>
       </select>
       <select name="" id="">
-        <option value="AM/PM" selected hidden>AM/PM</option>
+        <option value="AM/PM" selected hidden>AM-PM</option>
       </select>
+
+      <div id="push-error">
+
+        
+
+      </div>
+
       <div class="btns">
         <button onclick="setAlaram()" class="btn" id="set">Set</button>
         <button onclick="cancelAlaram()" class="btn" id="cancel">Cancel</button>
@@ -208,7 +267,7 @@
         second = timeString.substring(5, timeString.length);
       }
       else {
-        hout = timeString.substring(0, 2);
+        hour = timeString.substring(0, 2);
         minute = timeString.substring(3, 5);
         second = timeString.substring(6, timeString.length);
       }
@@ -244,15 +303,48 @@
       let hour = selectMenu[0].value;
       let minute = selectMenu[1].value;
       let ampm = selectMenu[2].value;
+      const e = document.getElementById("push-error");
 
       if (hour == "Hour" || minute == "Minute" || ampm == "AM/PM") {
-        alert("First, set alaram.");
+
+
+        const error = `
+          <div class="notify">
+            <div class="text-warn">First, set alaram.</div>
+            <div class="cancel-button" id="push-error" onclick="clearError()">Cancel</div>
+          </div>
+        `;
+        e.innerHTML = error;
+
+        setTimeout(() => {
+          e.innerHTML = "";
+        }, 10000);
+
+        
         return;
       }
 
       let clientTimeString = `${hour}:${minute}:${ampm}`;
-
       alaramTime = clientTimeString;
+
+      const successNotify = `
+        <div class="notify-success">
+          <div class="text-success">Alaram set ${hour} : ${minute} ${ampm}</div>
+          <div class="cancel-success-button" id="push-error" onclick="clearError()">Cancel</div>
+        </div>
+      `;
+
+      e.innerHTML = successNotify;
+      setTimeout(() => {
+        e.innerHTML = "";
+      }, 10000);
+
+      return;
+    }
+
+    function clearError() {
+      const e = document.getElementById("push-error");
+      e.innerHTML = "";
       return;
     }
 
