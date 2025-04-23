@@ -29,10 +29,8 @@
       font-size: 50px;
     }
     .container {
-      /* border: 2px solid black; */
       max-width: fit-content;
       margin-top: 15px;
-      
     }
     .box {
       padding: 8px;
@@ -48,7 +46,6 @@
       cursor: none;
     }
     .radio-box {
-      /* border: 2px solid purple; */
       margin-left: 5px;
     }
     .btn {
@@ -64,8 +61,6 @@
       outline: none;
     }
     .main {
-      /* border: 1px solid black; */
-      /* margin: auto; */
       max-width: 420px;
       padding: 20px 30px;
       border-radius: 10px;
@@ -76,22 +71,20 @@
     }
     select {
       padding: 7px;
-      min-width: 115px;
+      min-width: 120px;
       outline: none;
-      border-radius: 5px;
+      border: none;
+      font-size: 15px;
     }
     .btns {
       margin-top: 15px;
     }
-
     .style-clock {
-      /* border: 2px solid red; */
       display: flex;
       align-items: center;
       gap: 20px;
     }
     .hour {
-      /* border: 2px solid black; */
       font-size: 200px;
       font-weight: bold;
       color: rgb(56, 56, 218);
@@ -105,15 +98,12 @@
       font-weight: bold;
     }
     .container-minute-second {
-      /* border: 2px solid purple; */
       display: flex;
       flex-direction: column;
     }
     .spacer {
       font-size: 50px;
     }
-
-
     .notify {
       border: 1px solid rgba(255, 0, 0, 0.849);
       margin-top: 10px;
@@ -125,12 +115,10 @@
       align-items: center;
     }
     .text-warn {
-      /* border: 1px solid black; */
       color: red;
       font-weight: bold;
     }
     .cancel-button {
-      /* border: 1px solid black; */
       color: red;
       font-weight: bold;
       padding: 6px;
@@ -198,8 +186,6 @@
 
       <div id="push-error">
 
-        
-
       </div>
 
       <div class="btns">
@@ -231,7 +217,6 @@
       
       let option = `<option value="${i}">${i}</option>`;
       selectMenu[0].firstElementChild.insertAdjacentHTML("afterend", option);
-
     }
 
     for (let i = 59; i >= 0; i--) {
@@ -253,8 +238,6 @@
       let date = new Date();
 
       let timeString = date.toLocaleTimeString('en-US', options);
-      // document.getElementById("newClock").textContent = timeString;
-
       let lengthEqualTen = timeString.length == 10 ? true : false;
 
       let hour;
@@ -314,7 +297,6 @@
 
       if (hour == "Hour" || minute == "Minute" || ampm == "AM/PM") {
 
-
         const error = `
           <div class="notify">
             <div class="text-warn">First, set alaram.</div>
@@ -323,7 +305,6 @@
         `;
         e.innerHTML = error;
         hideNotifications(e);
-
         
         return;
       }
